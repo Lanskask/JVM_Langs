@@ -1,0 +1,10 @@
+# Scala/
+# Groovy/
+# Kotlin/
+
+*.iml
+*.class
+**/.idea/*
+
+**/META-INF/*
+**/out/*
