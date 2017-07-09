@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TWW Rest Groovy</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="mainCtrl">
+		<h1>Greeting: {{message}}</h1>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script type="text/javascript">
+		(function() {
+			angular
+				.module("app", [])
+				.controller("mainCtrl", mainCtrl);
+
+			function mainCtrl($http) {
+				var vm = this;
+
+				$http({
+							method: "GET",
+							url: "http://localhost:8080/hi/raf"
+						})
+					.then(function(response) {
+						vm.message = response.data.greeting;
+					}, function(response) {
+						vm.message = "Some thisnWrong";	
+					});
+			}
+		})();
+	</script>
+</body>
+</html>
